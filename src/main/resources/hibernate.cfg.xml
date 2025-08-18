@@ -12,5 +12,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">create</property>
+
+        <mapping class="com.disuraaberathna.globemed.entity.User"/>
     </session-factory>
 </hibernate-configuration>
