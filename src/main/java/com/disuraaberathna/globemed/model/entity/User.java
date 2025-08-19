@@ -38,6 +38,14 @@ public class User implements Serializable {
         this.role = role;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public UserTitles getTitle() {
         return title;
     }
