@@ -1,5 +1,6 @@
 package com.disuraaberathna.globemed.model.entity;
 
+import com.disuraaberathna.globemed.enums.Status;
 import com.disuraaberathna.globemed.enums.UserRoles;
 import com.disuraaberathna.globemed.enums.UserTitles;
 import jakarta.persistence.*;
@@ -25,6 +26,8 @@ public class User implements Serializable {
     private String password;
     @Enumerated(EnumType.STRING)
     private UserRoles role;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public User() {
     }
@@ -92,5 +95,13 @@ public class User implements Serializable {
 
     public void setRole(UserRoles role) {
         this.role = role;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
