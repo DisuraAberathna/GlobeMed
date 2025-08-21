@@ -14,5 +14,13 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="com.disuraaberathna.globemed.model.entity.User"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.Patient"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.Appointment"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.MedicalReport"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.Bill"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.BillItem"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.Report"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.ReportItem"/>
+        <mapping class="com.disuraaberathna.globemed.model.entity.Insurance"/>
     </session-factory>
 </hibernate-configuration>
