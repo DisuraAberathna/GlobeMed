@@ -1,0 +1,47 @@
+package com.disuraaberathna.globemed.controller.signin;
+
+import com.disuraaberathna.globemed.model.dao.SignInDAO;
+import com.disuraaberathna.globemed.model.entity.User;
+import com.disuraaberathna.globemed.util.HibernateUtil;
+import com.disuraaberathna.globemed.util.LoggerUtil;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
+import org.hibernate.Session;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class UsernamePasswordValidator extends SignInController {
+    private final static Logger logger = LoggerUtil.getLogger();
+
+    @Override
+    public SignInDAO handleRequest(SignInDAO signInDAO) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        try {
+            CriteriaBuilder cb = session.getCriteriaBuilder();
+            CriteriaQuery<User> criteriaQuery = cb.createQuery(User.class);
+            Root<User> userRoot = criteriaQuery.from(User.class);
+
+            criteriaQuery.where(cb.and(cb.equal(userRoot.get("username"), signInDAO.getUsername()), cb.equal(userRoot.get("password"), signInDAO.getPassword())));
+            User user = session.createQuery(criteriaQuery).uniqueResult();
+
+            if (user != null) {
+                signInDAO.setUser(user);
+                if (signInController != null) {
+                    signInController.handleRequest(signInDAO);
+                }
+            } else {
+                signInDAO.setMessage("Username or password is incorrect");
+                return signInDAO;
+            }
+        } catch (Exception e) {
+            logger.log(Level.SEVERE, e.getMessage(), e);
+            signInDAO.setMessage("Try Again");
+            return signInDAO;
+        }
+        return signInDAO;
+    }
+}
