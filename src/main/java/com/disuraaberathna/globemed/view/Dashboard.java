@@ -4,8 +4,6 @@
  */
 package com.disuraaberathna.globemed.view;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Cursor;
