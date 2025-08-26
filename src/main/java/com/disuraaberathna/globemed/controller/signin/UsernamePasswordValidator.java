@@ -8,6 +8,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,19 +18,28 @@ public class UsernamePasswordValidator extends SignInController {
 
     @Override
     public SignInDAO handleRequest(SignInDAO signInDAO) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Session session = null;
+        Transaction transaction = null;
 
         try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+
             CriteriaBuilder cb = session.getCriteriaBuilder();
             CriteriaQuery<User> criteriaQuery = cb.createQuery(User.class);
             Root<User> userRoot = criteriaQuery.from(User.class);
 
-            criteriaQuery.where(cb.and(cb.equal(userRoot.get("username"), signInDAO.getUsername()), cb.equal(userRoot.get("password"), signInDAO.getPassword())));
+            criteriaQuery.where(cb.and(
+                    cb.equal(userRoot.get("username"), signInDAO.getUsername()),
+                    cb.equal(userRoot.get("password"), signInDAO.getPassword())
+            ));
+
             User user = session.createQuery(criteriaQuery).uniqueResult();
 
             if (user != null) {
                 signInDAO.setUser(user);
+                transaction.commit();
+
                 if (signInController != null) {
                     signInController.handleRequest(signInDAO);
                 }
@@ -38,10 +48,19 @@ public class UsernamePasswordValidator extends SignInController {
                 return signInDAO;
             }
         } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
             logger.log(Level.SEVERE, e.getMessage(), e);
             signInDAO.setMessage("Try Again");
             return signInDAO;
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
+
         return signInDAO;
     }
 }
