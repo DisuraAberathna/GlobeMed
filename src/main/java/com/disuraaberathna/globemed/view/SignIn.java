@@ -4,11 +4,11 @@
  */
 package com.disuraaberathna.globemed.view;
 
-import com.disuraaberathna.globemed.controller.signin.RoleAccessController;
-import com.disuraaberathna.globemed.controller.signin.SignInController;
-import com.disuraaberathna.globemed.controller.signin.UserStatusValidator;
-import com.disuraaberathna.globemed.controller.signin.UsernamePasswordValidator;
+import com.disuraaberathna.globemed.controller.DashboardController;
+import com.disuraaberathna.globemed.controller.signin.*;
 import com.disuraaberathna.globemed.model.dao.SignInDAO;
+
+import javax.swing.*;
 
 /**
  *
@@ -157,13 +157,23 @@ public class SignIn extends javax.swing.JFrame {
         validateEmailAndPassword.setNextHandler(validateUserStatus);
         validateUserStatus.setNextHandler(roleAccessController);
 
+        SignInController decoratedChain = new LoggingSignInDecorator(new EncryptionSignInDecorator(validateEmailAndPassword));
+
         String username = jTextField1.getText();
         String password = String.valueOf(passwordField.getPassword());
 
         SignInDAO requestSignInContext = new SignInDAO(username, password);
 
-        SignInDAO responseSignInContext = validateEmailAndPassword.handleRequest(requestSignInContext);
-        System.out.println(responseSignInContext.getMessage());
+        SignInDAO responseSignInContext = decoratedChain.handleRequest(requestSignInContext);
+
+        if (responseSignInContext.isSuccess()) {
+            Dashboard dashboard = new Dashboard();
+            DashboardController dashboardController = new DashboardController(dashboard, responseSignInContext.getUser());
+            dashboardController.showDashboard();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, responseSignInContext.getMessage(), "Sign In Failed", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
