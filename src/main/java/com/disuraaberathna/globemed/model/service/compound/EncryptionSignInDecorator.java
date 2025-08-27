@@ -1,4 +1,4 @@
-package com.disuraaberathna.globemed.controller.signin;
+package com.disuraaberathna.globemed.model.service.compound;
 
 import com.disuraaberathna.globemed.model.dao.SignInDAO;
 
