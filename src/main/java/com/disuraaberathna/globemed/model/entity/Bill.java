@@ -1,5 +1,6 @@
 package com.disuraaberathna.globemed.model.entity;
 
+import com.disuraaberathna.globemed.enums.Status;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,15 +20,18 @@ public class Bill implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     public Bill() {
     }
 
-    public Bill(Double amount, Date date, Appointment appointment, Insurance insurance) {
+    public Bill(Double amount, Date date, Appointment appointment, Insurance insurance, Status status) {
         this.amount = amount;
         this.date = date;
         this.appointment = appointment;
         this.insurance = insurance;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -68,5 +72,13 @@ public class Bill implements Serializable {
 
     public void setInsurance(Insurance insurance) {
         this.insurance = insurance;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
