@@ -40,9 +40,9 @@ public class Dashboard extends javax.swing.JFrame {
     private void createCards() {
         patientRecordsBtn = createFeatureCard("Patient Records", "👥", "Manage patient information, medical history, and personal details");
         appointmentScheduleBtn = createFeatureCard("Appointments", "📅", "Schedule, reschedule, and manage patient appointments");
-        billingBtn = createFeatureCard("Billing & Insurance", "💰", "Generate bills and process insurance claims");
+        billingBtn = createFeatureCard("Billing & Insurance", "💳", "Generate bills and process insurance claims");
         reportsBtn = createFeatureCard("Medical Reports", "📊", "Generate treatment summaries and financial reports");
-        manageStaffBtn = createFeatureCard("Staff Management", "👨‍⚕️", "Manage staff roles, permissions, and access control");
+        manageStaffBtn = createFeatureCard("Staff Management", "🧑‍⚕️", "Manage staff roles, permissions, and access control");
 
         cardsPanel.add(patientRecordsBtn);
         cardsPanel.add(appointmentScheduleBtn);
@@ -65,7 +65,8 @@ public class Dashboard extends javax.swing.JFrame {
         topPanel.setOpaque(false);
 
         JLabel iconLabel = new JLabel(icon);
-        iconLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+        iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 32));
+        iconLabel.setPreferredSize(new Dimension(45, 45));
 
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
