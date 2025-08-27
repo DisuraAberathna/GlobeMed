@@ -18,17 +18,19 @@ public class Appointment implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
-    private Date dateTime;
+    private Date appointedDate;
+    private String appointedTime;
     @Enumerated(EnumType.STRING)
     private Status status;
 
     public Appointment() {
     }
 
-    public Appointment(User doctor, Patient patient, Date dateTime, Status status) {
+    public Appointment(User doctor, Patient patient, Date appointedDate, String appointedTime, Status status) {
         this.doctor = doctor;
         this.patient = patient;
-        this.dateTime = dateTime;
+        this.appointedDate = appointedDate;
+        this.appointedTime = appointedTime;
         this.status = status;
     }
 
@@ -56,12 +58,20 @@ public class Appointment implements Serializable {
         this.patient = patient;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getAppointedDate() {
+        return appointedDate;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setAppointedDate(Date appointedDate) {
+        this.appointedDate = appointedDate;
+    }
+
+    public String getAppointedTime() {
+        return appointedTime;
+    }
+
+    public void setAppointedTime(String appointedTime) {
+        this.appointedTime = appointedTime;
     }
 
     public Status getStatus() {

@@ -2,6 +2,7 @@ package com.disuraaberathna.globemed.controller;
 
 import com.disuraaberathna.globemed.model.entity.User;
 import com.disuraaberathna.globemed.view.Dashboard;
+import com.disuraaberathna.globemed.view.PatientView;
 
 public class DashboardController {
     private final Dashboard dashboard;
@@ -57,5 +58,11 @@ public class DashboardController {
     public void showDashboard() {
         dashboard.setUserInfo(user.getFirstName() + " " + user.getLastName(), user.getRole().name());
         dashboard.setVisible(true);
+    }
+
+    private void addEventListeners(){
+        dashboard.getPatientRecordsBtn().addActionListener(e -> {
+            PatientView  patientView = new PatientView();
+        });
     }
 }

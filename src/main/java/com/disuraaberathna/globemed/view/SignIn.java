@@ -5,8 +5,8 @@
 package com.disuraaberathna.globemed.view;
 
 import com.disuraaberathna.globemed.controller.DashboardController;
-import com.disuraaberathna.globemed.controller.signin.*;
 import com.disuraaberathna.globemed.model.dao.SignInDAO;
+import com.disuraaberathna.globemed.model.service.compound.*;
 
 import javax.swing.*;
 
