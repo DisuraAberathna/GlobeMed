@@ -9,9 +9,9 @@ public class StaffGroup implements StaffMember{
     private final String name;
     private final List<StaffMember> members;
 
-    public StaffGroup(String name, List<StaffMember> members) {
+    public StaffGroup(String name) {
         this.name = name;
-        this.members = members;
+        this.members = new ArrayList<>();
     }
 
     public void addMember(StaffMember member){
@@ -27,8 +27,15 @@ public class StaffGroup implements StaffMember{
     }
 
     @Override
-    public void showDetails() {
+    public String showDetails() {
         //
+        System.out.println("Group: " + name);
+        for (StaffMember member : members) {
+            System.out.print("  ");
+            member.showDetails();
+        }
+
+        return "";
     }
 
     @Override
