@@ -25,8 +25,8 @@ public class DashboardController {
         switch (user.getRole()) {
             case DOCTOR, NURSE:
                 dashboard.getPatientRecordsBtn().setEnabled(true);
-                dashboard.getAppointmentScheduleBtn().setEnabled(false);
-                dashboard.getBillingBtn().setEnabled(false);
+                dashboard.getAppointmentScheduleBtn().setEnabled(true);
+                dashboard.getBillingBtn().setEnabled(true);
                 dashboard.getReportsBtn().setEnabled(true);
                 dashboard.getManageStaffBtn().setEnabled(true);
                 break;
@@ -43,13 +43,6 @@ public class DashboardController {
                 dashboard.getBillingBtn().setEnabled(true);
                 dashboard.getReportsBtn().setEnabled(false);
                 dashboard.getManageStaffBtn().setEnabled(false);
-                break;
-            case ADMIN:
-                dashboard.getPatientRecordsBtn().setEnabled(true);
-                dashboard.getAppointmentScheduleBtn().setEnabled(true);
-                dashboard.getBillingBtn().setEnabled(true);
-                dashboard.getReportsBtn().setEnabled(true);
-                dashboard.getManageStaffBtn().setEnabled(true);
                 break;
             default:
                 dashboard.getPatientRecordsBtn().setEnabled(false);
