@@ -5,7 +5,7 @@ import com.disuraaberathna.globemed.model.entity.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffGroup implements StaffMember{
+public class StaffGroup implements StaffMember {
     private final String name;
     private final List<StaffMember> members;
 
@@ -14,28 +14,27 @@ public class StaffGroup implements StaffMember{
         this.members = new ArrayList<>();
     }
 
-    public void addMember(StaffMember member){
+    public void addMember(StaffMember member) {
         members.add(member);
     }
 
-    public void removeMember(StaffMember member){
+    public void removeMember(StaffMember member) {
         members.remove(member);
     }
 
-    public void removeMember(User user){
-        members.removeIf(member-> member instanceof User && ((User)member).getId().equals(user.getId()));
+    public void removeMember(User user) {
+        members.removeIf(member -> member instanceof User && ((User) member).getId().equals(user.getId()));
     }
 
     @Override
     public String showDetails() {
-        //
-        System.out.println("Group: " + name);
+        StringBuilder sb = new StringBuilder();
+        sb.append(" Staff Group: ").append(name).append("\n");
         for (StaffMember member : members) {
-            System.out.print("  ");
-            member.showDetails();
+            sb.append("   ").append(member.showDetails()).append("\n");
         }
 
-        return "";
+        return sb.toString();
     }
 
     @Override
