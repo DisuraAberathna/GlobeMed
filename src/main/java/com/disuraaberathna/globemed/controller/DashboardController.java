@@ -17,6 +17,8 @@ public class DashboardController {
 
         setPermissions();
         addEventListeners();
+
+        new PatientController(new PatientView(), new PatientDAO(), dashboard.getViewPanel()).showView();
     }
 
     private void setPermissions() {
@@ -66,17 +68,11 @@ public class DashboardController {
 
     private void addEventListeners() {
         dashboard.getPatientRecordsBtn().addActionListener(e -> {
-            PatientView patientView = new PatientView();
-            PatientDAO patientDAO = new PatientDAO();
-            PatientController patientController = new PatientController(patientView, patientDAO, dashboard.getViewPanel());
-            patientController.showView();
+            new PatientController(new PatientView(), new PatientDAO(), dashboard.getViewPanel()).showView();
         });
 
         dashboard.getManageStaffBtn().addActionListener(e -> {
-            StaffManagementView staffView = new StaffManagementView();
-            UserDAO userDAO = new UserDAO();
-            StaffManagementController staffManagementController = new StaffManagementController(staffView, userDAO, dashboard.getViewPanel());
-            staffManagementController.showView();
+            new StaffManagementController(new StaffManagementView(), new UserDAO(), dashboard.getViewPanel()).showView();
         });
     }
 }
