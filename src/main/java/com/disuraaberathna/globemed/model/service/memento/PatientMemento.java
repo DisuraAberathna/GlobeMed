@@ -10,16 +10,16 @@ public class PatientMemento {
     private final String mobile;
     private final String email;
     private final Genders gender;
-    private final Date birthOfDate;
+    private final Date dateOfBirth;
     private final String address;
 
-    public PatientMemento(String firstName, String lastName, String mobile, String email, Genders gender, Date birthOfDate, String address) {
+    public PatientMemento(String firstName, String lastName, String mobile, String email, Genders gender, Date dateOfBirth, String address) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mobile = mobile;
         this.email = email;
         this.gender = gender;
-        this.birthOfDate = birthOfDate;
+        this.dateOfBirth = dateOfBirth;
         this.address = address;
     }
 
@@ -43,8 +43,8 @@ public class PatientMemento {
         return gender;
     }
 
-    public Date getBirthOfDate() {
-        return birthOfDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public String getAddress() {
