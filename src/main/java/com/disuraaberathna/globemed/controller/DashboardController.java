@@ -13,6 +13,7 @@ public class DashboardController {
         this.user = user;
 
         setPermissions();
+        addEventListeners();
     }
 
     private void setPermissions() {
