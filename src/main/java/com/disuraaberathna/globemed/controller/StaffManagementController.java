@@ -13,6 +13,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Base64;
 import java.util.List;
 import java.util.Vector;
@@ -26,13 +28,18 @@ public class StaffManagementController {
     private List<User> allStaff;
     private User selectedUser;
     private final static Logger logger = LoggerUtil.getLogger();
+    private final JPanel viewPanel;
+    private String details;
 
-    public StaffManagementController(StaffManagementView view, UserDAO userDAO) {
+    public StaffManagementController(StaffManagementView view, UserDAO userDAO, JPanel viewPanel) {
         this.view = view;
         this.userDAO = userDAO;
+        this.viewPanel = viewPanel;
         this.staffGroup = new StaffGroup("All Staff");
 
         loadStaffTable();
+        addEventListeners();
+        buildStaffHierarchy();
     }
 
     private void loadStaffTable() {
@@ -74,24 +81,33 @@ public class StaffManagementController {
         view.getStatusComboBox().setSelectedItem(user.getStatus().toString());
     }
 
+    private void buildStaffHierarchy() {
+        for (User user : allStaff) {
+            staffGroup.addMember(user);
+        }
+
+        details = "Staff Hierarchy : \n" + staffGroup.showDetails();
+        System.out.println(details);
+    }
+
     private boolean validateStaffDataFields() {
         if (view.getFnameField().getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(view, "First name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(viewPanel.getParent(), "First name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         if (view.getLnameField().getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(view, "Last name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(viewPanel.getParent(), "Last name is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         if (view.getUsernameField().getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(view, "Username is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(viewPanel.getParent(), "Username is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         if (view.getPasswordField().getPassword().length == 0) {
-            JOptionPane.showMessageDialog(view, "Password is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(viewPanel.getParent(), "Password is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
@@ -122,21 +138,21 @@ public class StaffManagementController {
                 staffGroup.addMember(newUser);
 
                 view.updateStatus("Staff added successfully!", new Color(46, 204, 113));
-                JOptionPane.showMessageDialog(view, "Staff added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Staff added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 loadStaffTable();
                 view.clearForm();
                 selectedUser = null;
             } catch (Exception ex) {
                 view.updateStatus("Error adding staff: " + ex.getMessage(), new Color(231, 76, 60));
-                JOptionPane.showMessageDialog(view, "Error adding staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Error adding staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 logger.log(Level.SEVERE, "Error adding staff: " + ex.getMessage(), ex);
             }
         });
 
         view.getUpdateBtn().addActionListener(e -> {
             if (selectedUser == null) {
-                JOptionPane.showMessageDialog(view, "Please select a staff member to update.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Please select a staff member to update.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -161,25 +177,25 @@ public class StaffManagementController {
                 userDAO.updateUser(selectedUser);
 
                 view.updateStatus("Staff updated successfully!", new Color(46, 204, 113));
-                JOptionPane.showMessageDialog(view, "Staff updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Staff updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                 loadStaffTable();
                 view.clearForm();
                 selectedUser = null;
             } catch (Exception ex) {
                 view.updateStatus("Error updating staff: " + ex.getMessage(), new Color(231, 76, 60));
-                JOptionPane.showMessageDialog(view, "Error updating staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Error updating staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 logger.log(Level.SEVERE, "Error updating staff: " + ex.getMessage(), ex);
             }
         });
 
         view.getDeleteBtn().addActionListener(e -> {
             if (selectedUser == null) {
-                JOptionPane.showMessageDialog(view, "Please select a staff member to delete.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Please select a staff member to delete.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            int confirm = JOptionPane.showConfirmDialog(view, "Are you sure you want to delete this staff member?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
+            int confirm = JOptionPane.showConfirmDialog(viewPanel.getParent(), "Are you sure you want to delete this staff member?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
 
             if (confirm == JOptionPane.YES_OPTION) {
                 try {
@@ -188,14 +204,14 @@ public class StaffManagementController {
                     staffGroup.removeMember(selectedUser);
 
                     view.updateStatus("Staff deleted successfully!", new Color(46, 204, 113));
-                    JOptionPane.showMessageDialog(view, "Staff deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(viewPanel.getParent(), "Staff deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                     loadStaffTable();
                     view.clearForm();
                     selectedUser = null;
                 } catch (Exception ex) {
                     view.updateStatus("Error deleting staff: " + ex.getMessage(), new Color(231, 76, 60));
-                    JOptionPane.showMessageDialog(view, "Error deleting staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(viewPanel.getParent(), "Error deleting staff: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                     logger.log(Level.SEVERE, "Error deleting staff: " + ex.getMessage(), ex);
                 }
             }
@@ -229,6 +245,17 @@ public class StaffManagementController {
             }
         });
 
+        view.getStaffTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int selectedRow = view.getStaffTable().getSelectedRow();
+
+                if (selectedRow >= 0) {
+                    selectStaffFromTable(selectedRow);
+                }
+            }
+        });
+
         view.getClearBtn().addActionListener(e -> {
             view.getSearchField().setText("");
             loadStaffTable();
@@ -236,6 +263,8 @@ public class StaffManagementController {
     }
 
     public void showView() {
-        view.setVisible(true);
+        viewPanel.removeAll();
+        viewPanel.add(view);
+        SwingUtilities.updateComponentTreeUI(viewPanel);
     }
 }
