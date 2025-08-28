@@ -73,12 +73,12 @@ public class StaffManagementController {
     }
 
     private void populateFormFromUser(User user) {
-        view.getRoleComboBox().setSelectedItem(user.getRole().toString());
-        view.getTitleComboBox().setSelectedItem(user.getTitle() != null ? user.getTitle().toString() : "DR");
+        view.getRoleComboBox().setSelectedItem(String.valueOf(user.getRole()));
+        view.getTitleComboBox().setSelectedItem(user.getTitle() != null ? String.valueOf(user.getTitle()) : "DR");
         view.getFnameField().setText(user.getFirstName());
         view.getLnameField().setText(user.getLastName());
         view.getUsernameField().setText(user.getUsername());
-        view.getStatusComboBox().setSelectedItem(user.getStatus().toString());
+        view.getStatusComboBox().setSelectedItem(String.valueOf(user.getStatus()));
     }
 
     private void buildStaffHierarchy() {
