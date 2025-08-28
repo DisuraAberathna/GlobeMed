@@ -1,6 +1,9 @@
 package com.disuraaberathna.globemed.model.entity;
 
 import com.disuraaberathna.globemed.enums.Genders;
+import com.disuraaberathna.globemed.model.service.memento.PatientMemento;
+import com.disuraaberathna.globemed.model.service.visitor.ReportElement;
+import com.disuraaberathna.globemed.model.service.visitor.ReportVisitor;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "patients")
-public class Patient implements Serializable {
+public class Patient implements Serializable, ReportElement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -102,5 +105,24 @@ public class Patient implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public PatientMemento save() {
+        return new PatientMemento(firstName, lastName, mobile, email, gender, dateOfBirth, address);
+    }
+
+    public void restore(PatientMemento memento) {
+        this.firstName = memento.getFirstName();
+        this.lastName = memento.getLastName();
+        this.mobile = memento.getMobile();
+        this.email = memento.getEmail();
+        this.gender = memento.getGender();
+        this.dateOfBirth = memento.getDateOfBirth();
+        this.address = memento.getAddress();
+    }
+
+    @Override
+    public void accept(ReportVisitor visitor) {
+        visitor.visit(this);
     }
 }
