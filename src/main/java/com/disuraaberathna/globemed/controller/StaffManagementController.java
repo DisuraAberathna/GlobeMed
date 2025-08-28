@@ -27,9 +27,9 @@ public class StaffManagementController {
     private final StaffGroup staffGroup;
     private List<User> allStaff;
     private User selectedUser;
-    private final static Logger logger = LoggerUtil.getLogger();
     private final JPanel viewPanel;
     private String details;
+    private final static Logger logger = LoggerUtil.getLogger();
 
     public StaffManagementController(StaffManagementView view, UserDAO userDAO, JPanel viewPanel) {
         this.view = view;
