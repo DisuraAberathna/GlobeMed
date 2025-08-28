@@ -1,5 +1,6 @@
 package com.disuraaberathna.globemed.controller;
 
+import com.disuraaberathna.globemed.model.dao.PatientDAO;
 import com.disuraaberathna.globemed.model.dao.UserDAO;
 import com.disuraaberathna.globemed.model.entity.User;
 import com.disuraaberathna.globemed.view.Dashboard;
@@ -66,6 +67,9 @@ public class DashboardController {
     private void addEventListeners() {
         dashboard.getPatientRecordsBtn().addActionListener(e -> {
             PatientView patientView = new PatientView();
+            PatientDAO patientDAO = new PatientDAO();
+            PatientController patientController = new PatientController(patientView, patientDAO, dashboard.getViewPanel());
+            patientController.showView();
         });
 
         dashboard.getManageStaffBtn().addActionListener(e -> {
