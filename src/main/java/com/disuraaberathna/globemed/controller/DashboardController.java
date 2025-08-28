@@ -1,8 +1,10 @@
 package com.disuraaberathna.globemed.controller;
 
+import com.disuraaberathna.globemed.model.dao.UserDAO;
 import com.disuraaberathna.globemed.model.entity.User;
 import com.disuraaberathna.globemed.view.Dashboard;
 import com.disuraaberathna.globemed.view.PatientView;
+import com.disuraaberathna.globemed.view.StaffManagementView;
 
 public class DashboardController {
     private final Dashboard dashboard;
@@ -23,7 +25,7 @@ public class DashboardController {
                 dashboard.getAppointmentScheduleBtn().setEnabled(false);
                 dashboard.getBillingBtn().setEnabled(false);
                 dashboard.getReportsBtn().setEnabled(true);
-                dashboard.getManageStaffBtn().setEnabled(false);
+                dashboard.getManageStaffBtn().setEnabled(true);
                 break;
             case PHARMACIST:
                 dashboard.getPatientRecordsBtn().setEnabled(true);
@@ -61,9 +63,16 @@ public class DashboardController {
         dashboard.setVisible(true);
     }
 
-    private void addEventListeners(){
+    private void addEventListeners() {
         dashboard.getPatientRecordsBtn().addActionListener(e -> {
-            PatientView  patientView = new PatientView();
+            PatientView patientView = new PatientView();
+        });
+
+        dashboard.getManageStaffBtn().addActionListener(e -> {
+            StaffManagementView staffView = new StaffManagementView();
+            UserDAO userDAO = new UserDAO();
+            StaffManagementController staffManagementController = new StaffManagementController(staffView, userDAO, dashboard.getViewPanel());
+            staffManagementController.showView();
         });
     }
 }
