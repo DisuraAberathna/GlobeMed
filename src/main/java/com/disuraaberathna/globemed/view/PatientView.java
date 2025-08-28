@@ -8,14 +8,11 @@ import com.disuraaberathna.globemed.enums.Genders;
 import com.disuraaberathna.globemed.enums.Status;
 import com.disuraaberathna.globemed.enums.UserRoles;
 import com.disuraaberathna.globemed.enums.UserTitles;
+import com.toedter.calendar.JDateChooser;
 
 import java.awt.Color;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JPasswordField;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import java.util.Date;
+import javax.swing.*;
 
 /**
  *
@@ -55,23 +52,24 @@ public class PatientView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        roleComboBox = new javax.swing.JComboBox<>();
         genderComboBox = new javax.swing.JComboBox<>();
         fnameField = new javax.swing.JTextField();
         lnameField = new javax.swing.JTextField();
-        usernameField = new javax.swing.JTextField();
-        statusComboBox = new javax.swing.JComboBox<>();
-        passwordField = new javax.swing.JPasswordField();
+        mobileField = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         deleteBtn = new javax.swing.JButton();
-        statusLabel = new javax.swing.JLabel();
+        dobField = new com.toedter.calendar.JDateChooser();
+        idField = new javax.swing.JTextField();
+        emailField = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        addressArea = new javax.swing.JTextArea();
         jPanel5 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        patientTable = new javax.swing.JTable();
+        patientsTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
@@ -81,11 +79,6 @@ public class PatientView extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.BorderLayout());
 
         jPanel4.setBackground(new java.awt.Color(229, 229, 229));
-
-        roleComboBox.setBackground(new java.awt.Color(229, 229, 229));
-        roleComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        roleComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Role", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         genderComboBox.setBackground(new java.awt.Color(229, 229, 229));
         genderComboBox.setForeground(new java.awt.Color(0, 0, 0));
@@ -100,18 +93,9 @@ public class PatientView extends javax.swing.JPanel {
         lnameField.setForeground(new java.awt.Color(0, 0, 0));
         lnameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        usernameField.setBackground(new java.awt.Color(229, 229, 229));
-        usernameField.setForeground(new java.awt.Color(0, 0, 0));
-        usernameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-
-        statusComboBox.setBackground(new java.awt.Color(229, 229, 229));
-        statusComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        statusComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
-
-        passwordField.setBackground(new java.awt.Color(229, 229, 229));
-        passwordField.setForeground(new java.awt.Color(0, 0, 0));
-        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        mobileField.setBackground(new java.awt.Color(229, 229, 229));
+        mobileField.setForeground(new java.awt.Color(0, 0, 0));
+        mobileField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Mobile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         addBtn.setBackground(new java.awt.Color(51, 102, 255));
         addBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
@@ -132,40 +116,52 @@ public class PatientView extends javax.swing.JPanel {
         deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete Staff");
 
-        statusLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
-        statusLabel.setForeground(new java.awt.Color(51, 102, 255));
-        statusLabel.setText("Ready to manage staff");
+        dobField.setBackground(new java.awt.Color(229, 229, 229));
+        dobField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Date of Birth", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        dobField.setForeground(new java.awt.Color(0, 0, 0));
+
+        idField.setEditable(false);
+        idField.setBackground(new java.awt.Color(229, 229, 229));
+        idField.setForeground(new java.awt.Color(0, 0, 0));
+        idField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "ID", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        emailField.setBackground(new java.awt.Color(229, 229, 229));
+        emailField.setForeground(new java.awt.Color(0, 0, 0));
+        emailField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Email", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        addressArea.setBackground(new java.awt.Color(229, 229, 229));
+        addressArea.setColumns(5);
+        addressArea.setLineWrap(true);
+        addressArea.setRows(5);
+        addressArea.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        jScrollPane2.setViewportView(addressArea);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(statusLabel)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2)
+                    .addComponent(dobField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(statusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(addBtn)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(updateBtn)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(deleteBtn)))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(passwordField)
-                            .addComponent(usernameField)
-                            .addComponent(lnameField)
-                            .addComponent(fnameField)
-                            .addComponent(genderComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(roleComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(15, 15, 15))))
+                                .addComponent(addBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(updateBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(deleteBtn)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(mobileField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lnameField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fnameField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(genderComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailField, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(15, 15, 15))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,22 +169,22 @@ public class PatientView extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mobileField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(statusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dobField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(statusLabel)
-                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addBtn)
                     .addComponent(updateBtn)
@@ -209,7 +205,7 @@ public class PatientView extends javax.swing.JPanel {
         clearBtn.setForeground(new java.awt.Color(255, 255, 255));
         clearBtn.setText("Clear");
 
-        patientTable.setModel(new javax.swing.table.DefaultTableModel(
+        patientsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -225,8 +221,8 @@ public class PatientView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        patientTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(patientTable);
+        patientsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(patientsTable);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -261,7 +257,7 @@ public class PatientView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -272,12 +268,8 @@ public class PatientView extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JComboBox<String> getRoleComboBox() {
-        return roleComboBox;
-    }
-
-    public JComboBox<String> getTitleComboBox() {
-        return genderComboBox;
+    public JTextField getIdField() {
+        return idField;
     }
 
     public JTextField getFnameField() {
@@ -288,16 +280,24 @@ public class PatientView extends javax.swing.JPanel {
         return lnameField;
     }
 
-    public JTextField getUsernameField() {
-        return usernameField;
+    public JTextField getMobileField() {
+        return mobileField;
     }
 
-    public JPasswordField getPasswordField() {
-        return passwordField;
+    public JTextField getEmailField() {
+        return emailField;
     }
 
-    public JComboBox<String> getStatusComboBox() {
-        return statusComboBox;
+    public JComboBox<String> getGenderComboBox() {
+        return genderComboBox;
+    }
+
+    public JDateChooser getDobField() {
+        return dobField;
+    }
+
+    public JTextArea getAddressArea() {
+        return addressArea;
     }
 
     public JButton getAddBtn() {
@@ -320,44 +320,44 @@ public class PatientView extends javax.swing.JPanel {
         return searchField;
     }
 
-    public JTable getStaffTable() {
-        return patientTable;
+    public JTable getPatientsTable() {
+        return patientsTable;
     }
 
     public void clearForm() {
-        roleComboBox.setSelectedIndex(0);
-        genderComboBox.setSelectedIndex(0);
+        idField.setText("");
         fnameField.setText("");
         lnameField.setText("");
-        usernameField.setText("");
-        passwordField.setText("");
-        statusComboBox.setSelectedIndex(0);
-        statusLabel.setText("Ready to manage staff");
+        mobileField.setText("");
+        emailField.setText("");
+        genderComboBox.setSelectedIndex(0);
+        dobField.setDate(null);
+        addressArea.setText("");
     }
 
     public void populateFormFromTable(int row) {
         if (row >= 0) {
-            roleComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 1)));
-            genderComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 2)));
-            fnameField.setText(String.valueOf(patientTable.getValueAt(row, 3)));
-            lnameField.setText(String.valueOf(patientTable.getValueAt(row, 4)));
-            usernameField.setText(String.valueOf(patientTable.getValueAt(row, 5)));
-            statusComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 6)));
-            statusLabel.setText("Selected staff for modification");
+            idField.setText(String.valueOf(patientsTable.getValueAt(row, 0)));
+            fnameField.setText(String.valueOf(patientsTable.getValueAt(row, 1)));
+            lnameField.setText(String.valueOf(patientsTable.getValueAt(row, 2)));
+            mobileField.setText(String.valueOf(patientsTable.getValueAt(row, 3)));
+            emailField.setText(String.valueOf(patientsTable.getValueAt(row, 4)));
+            genderComboBox.setSelectedItem(String.valueOf(patientsTable.getValueAt(row, 5)));
+            dobField.setDate((Date) patientsTable.getValueAt(row, 6));
+            addressArea.setText(String.valueOf(patientsTable.getValueAt(row, 7)));
         }
-    }
-
-    public void updateStatus(String message, Color color) {
-        statusLabel.setText(message);
-        statusLabel.setForeground(color);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
+    private javax.swing.JTextArea addressArea;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton deleteBtn;
+    private com.toedter.calendar.JDateChooser dobField;
+    private javax.swing.JTextField emailField;
     private javax.swing.JTextField fnameField;
     private javax.swing.JComboBox<String> genderComboBox;
+    private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -365,14 +365,11 @@ public class PatientView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField lnameField;
-    private javax.swing.JPasswordField passwordField;
-    private javax.swing.JTable patientTable;
-    private javax.swing.JComboBox<String> roleComboBox;
+    private javax.swing.JTextField mobileField;
+    private javax.swing.JTable patientsTable;
     private javax.swing.JTextField searchField;
-    private javax.swing.JComboBox<String> statusComboBox;
-    private javax.swing.JLabel statusLabel;
     private javax.swing.JButton updateBtn;
-    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }
