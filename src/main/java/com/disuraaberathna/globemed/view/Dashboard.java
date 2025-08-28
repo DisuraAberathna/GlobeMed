@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 /**
  *
@@ -28,99 +29,104 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         createCards();
-
+        
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
+    
     public void setUserInfo(String userName, String userRole) {
         welcomeLabel.setText("Welcome, " + userName);
         roleLabel.setText("Role: " + userRole);
     }
-
+    
     private void createCards() {
         patientRecordsBtn = createFeatureCard("Patient Records", "👥", "Manage patient information, medical history, and personal details");
         appointmentScheduleBtn = createFeatureCard("Appointments", "📅", "Schedule, reschedule, and manage patient appointments");
         billingBtn = createFeatureCard("Billing & Insurance", "💳", "Generate bills and process insurance claims");
         reportsBtn = createFeatureCard("Medical Reports", "📊", "Generate treatment summaries and financial reports");
         manageStaffBtn = createFeatureCard("Staff Management", "🧑‍⚕️", "Manage staff roles, permissions, and access control");
-
+        
         cardsPanel.add(patientRecordsBtn);
         cardsPanel.add(appointmentScheduleBtn);
         cardsPanel.add(billingBtn);
         cardsPanel.add(reportsBtn);
         cardsPanel.add(manageStaffBtn);
     }
-
+    
     private JButton createFeatureCard(String title, String icon, String description) {
         JButton btn = new JButton();
         btn.setLayout(new BorderLayout());
-        btn.setPreferredSize(new Dimension(300, 200));
-        btn.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        btn.setPreferredSize(new Dimension(400, 180));
+        btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 1, true));
         btn.setBackground(Color.WHITE);
         btn.setFocusPainted(false);
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+        
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
         topPanel.setOpaque(false);
-
+        
         JLabel iconLabel = new JLabel(icon);
         iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 32));
         iconLabel.setPreferredSize(new Dimension(45, 45));
-
+        
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
         titleLabel.setForeground(new Color(52, 73, 94));
-
+        
         topPanel.add(iconLabel);
         topPanel.add(titleLabel);
-
+        
         JPanel descPanel = new JPanel();
         descPanel.setLayout(new BorderLayout());
+        descPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
         descPanel.setOpaque(false);
-
-        JLabel descLabel = new JLabel();
+        
+        JTextArea descLabel = new JTextArea();
         descLabel.setText(description);
-        descLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        descLabel.setFont(new Font("Courier New", Font.PLAIN, 12));
+        descLabel.setLineWrap(true);
+        descLabel.setWrapStyleWord(true);
+        descLabel.setEditable(false);
+        descLabel.setOpaque(false);
+        descLabel.setFont(new Font("Courier New", Font.PLAIN, 14));
         descLabel.setForeground(new Color(127, 140, 141));
-
+        
         descPanel.add(descLabel, BorderLayout.CENTER);
-
+        
         btn.add(topPanel, BorderLayout.NORTH);
         btn.add(descPanel, BorderLayout.CENTER);
-
+        
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn.setBackground(new Color(248, 248, 248));
             }
-
+            
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn.setBackground(Color.WHITE);
             }
         });
-
+        
         return btn;
     }
-
+    
     public JButton getPatientRecordsBtn() {
         return patientRecordsBtn;
     }
-
+    
     public JButton getAppointmentScheduleBtn() {
         return appointmentScheduleBtn;
     }
-
+    
     public JButton getBillingBtn() {
         return billingBtn;
     }
-
+    
     public JButton getReportsBtn() {
         return reportsBtn;
     }
-
+    
     public JButton getManageStaffBtn() {
         return manageStaffBtn;
     }
@@ -139,6 +145,7 @@ public class Dashboard extends javax.swing.JFrame {
         welcomeLabel = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         cardsPanel = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GlobeMed | Healthcare Management System");
@@ -180,9 +187,22 @@ public class Dashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        cardsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 30, 30, 30));
-        cardsPanel.setLayout(new java.awt.GridLayout(2, 3, 20, 20));
-        jPanel1.add(cardsPanel, java.awt.BorderLayout.CENTER);
+        cardsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
+        cardsPanel.setLayout(new java.awt.GridLayout(5, 1, 20, 20));
+        jPanel1.add(cardsPanel, java.awt.BorderLayout.LINE_START);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1071, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 439, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -203,6 +223,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel cardsPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel roleLabel;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JButton patientRecordsBtn;
