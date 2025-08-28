@@ -5,12 +5,8 @@
 package com.disuraaberathna.globemed.view;
 
 import com.disuraaberathna.globemed.enums.Genders;
-import com.disuraaberathna.globemed.enums.Status;
-import com.disuraaberathna.globemed.enums.UserRoles;
-import com.disuraaberathna.globemed.enums.UserTitles;
 import com.toedter.calendar.JDateChooser;
 
-import java.awt.Color;
 import java.util.Date;
 import javax.swing.*;
 
