@@ -31,7 +31,6 @@ public class PatientView extends javax.swing.JPanel {
 
     private void loadGenders() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addElement("Select gender");
 
         for (Genders genders : Genders.values()) {
             model.addElement(genders);
@@ -56,15 +55,16 @@ public class PatientView extends javax.swing.JPanel {
         fnameField = new javax.swing.JTextField();
         lnameField = new javax.swing.JTextField();
         mobileField = new javax.swing.JTextField();
-        addBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        deleteBtn = new javax.swing.JButton();
+        formCancelBtn = new javax.swing.JButton();
         dobField = new com.toedter.calendar.JDateChooser();
         idField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         addressArea = new javax.swing.JTextArea();
+        undoBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
@@ -97,24 +97,24 @@ public class PatientView extends javax.swing.JPanel {
         mobileField.setForeground(new java.awt.Color(0, 0, 0));
         mobileField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Mobile", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        addBtn.setBackground(new java.awt.Color(51, 102, 255));
-        addBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        addBtn.setForeground(new java.awt.Color(255, 255, 255));
-        addBtn.setText("Add Staff");
+        saveBtn.setBackground(new java.awt.Color(51, 102, 255));
+        saveBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        saveBtn.setForeground(new java.awt.Color(255, 255, 255));
+        saveBtn.setText("Save");
 
         updateBtn.setBackground(new java.awt.Color(255, 204, 102));
         updateBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         updateBtn.setForeground(new java.awt.Color(0, 0, 0));
-        updateBtn.setText("Update Staff");
+        updateBtn.setText("Update");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Patient Information");
 
-        deleteBtn.setBackground(new java.awt.Color(255, 51, 51));
-        deleteBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
-        deleteBtn.setText("Delete Staff");
+        formCancelBtn.setBackground(new java.awt.Color(255, 51, 51));
+        formCancelBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        formCancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        formCancelBtn.setText("Cancel");
 
         dobField.setBackground(new java.awt.Color(229, 229, 229));
         dobField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Date of Birth", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -136,6 +136,11 @@ public class PatientView extends javax.swing.JPanel {
         addressArea.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Address", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
         jScrollPane2.setViewportView(addressArea);
 
+        undoBtn.setBackground(new java.awt.Color(102, 255, 102));
+        undoBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        undoBtn.setForeground(new java.awt.Color(0, 0, 0));
+        undoBtn.setText("Undo");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -149,11 +154,13 @@ public class PatientView extends javax.swing.JPanel {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(addBtn)
+                                .addComponent(saveBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(updateBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(deleteBtn)))
+                                .addComponent(undoBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(formCancelBtn)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(mobileField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lnameField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,10 +193,11 @@ public class PatientView extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addBtn)
+                    .addComponent(saveBtn)
                     .addComponent(updateBtn)
-                    .addComponent(deleteBtn))
-                .addGap(20, 20, 20))
+                    .addComponent(formCancelBtn)
+                    .addComponent(undoBtn))
+                .addGap(75, 75, 75))
         );
 
         jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_START);
@@ -240,7 +248,7 @@ public class PatientView extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -300,16 +308,20 @@ public class PatientView extends javax.swing.JPanel {
         return addressArea;
     }
 
-    public JButton getAddBtn() {
-        return addBtn;
+    public JButton getSaveBtn() {
+        return saveBtn;
     }
 
     public JButton getUpdateBtn() {
         return updateBtn;
     }
 
-    public JButton getDeleteBtn() {
-        return deleteBtn;
+    public JButton getUndoBtn() {
+        return undoBtn;
+    }
+
+    public JButton getFormCancelBtn() {
+        return formCancelBtn;
     }
 
     public JButton getClearBtn() {
@@ -349,13 +361,12 @@ public class PatientView extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addBtn;
     private javax.swing.JTextArea addressArea;
     private javax.swing.JButton clearBtn;
-    private javax.swing.JButton deleteBtn;
     private com.toedter.calendar.JDateChooser dobField;
     private javax.swing.JTextField emailField;
     private javax.swing.JTextField fnameField;
+    private javax.swing.JButton formCancelBtn;
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel2;
@@ -369,7 +380,9 @@ public class PatientView extends javax.swing.JPanel {
     private javax.swing.JTextField lnameField;
     private javax.swing.JTextField mobileField;
     private javax.swing.JTable patientsTable;
+    private javax.swing.JButton saveBtn;
     private javax.swing.JTextField searchField;
+    private javax.swing.JButton undoBtn;
     private javax.swing.JButton updateBtn;
     // End of variables declaration//GEN-END:variables
 }
