@@ -1,35 +1,38 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.disuraaberathna.globemed.view;
 
 import com.disuraaberathna.globemed.enums.Status;
 import com.disuraaberathna.globemed.enums.UserRoles;
 import com.disuraaberathna.globemed.enums.UserTitles;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author User
  */
-public class StaffManagementView extends javax.swing.JDialog {
+public class StaffManagementView extends javax.swing.JPanel {
 
     /**
-     * Creates new form StaffManagementView
+     * Creates new form a
      */
-    public StaffManagementView(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public StaffManagementView() {
         initComponents();
-
-        loadUserRoles();
+        
+         loadUserRoles();
         loadUserTitles();
         loadStatus();
     }
-
-    private void loadUserRoles() {
+    
+     private void loadUserRoles() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.addElement("Select user role");
 
@@ -70,8 +73,6 @@ public class StaffManagementView extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         roleComboBox = new javax.swing.JComboBox<>();
@@ -93,72 +94,42 @@ public class StaffManagementView extends javax.swing.JDialog {
         staffTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Globemed | Staff Management");
-        setResizable(false);
+        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setBackground(new java.awt.Color(153, 204, 255));
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Staff Management");
-        jLabel1.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1176, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
-        );
-
-        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
-
         jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBackground(new java.awt.Color(229, 229, 229));
 
-        roleComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        roleComboBox.setBackground(new java.awt.Color(229, 229, 229));
         roleComboBox.setForeground(new java.awt.Color(0, 0, 0));
         roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         roleComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Role", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        titleComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        titleComboBox.setBackground(new java.awt.Color(229, 229, 229));
         titleComboBox.setForeground(new java.awt.Color(0, 0, 0));
         titleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         titleComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Title", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        fnameField.setBackground(new java.awt.Color(255, 255, 255));
+        fnameField.setBackground(new java.awt.Color(229, 229, 229));
         fnameField.setForeground(new java.awt.Color(0, 0, 0));
         fnameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        lnameField.setBackground(new java.awt.Color(255, 255, 255));
+        lnameField.setBackground(new java.awt.Color(229, 229, 229));
         lnameField.setForeground(new java.awt.Color(0, 0, 0));
         lnameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        usernameField.setBackground(new java.awt.Color(255, 255, 255));
+        usernameField.setBackground(new java.awt.Color(229, 229, 229));
         usernameField.setForeground(new java.awt.Color(0, 0, 0));
         usernameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        statusComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        statusComboBox.setBackground(new java.awt.Color(229, 229, 229));
         statusComboBox.setForeground(new java.awt.Color(0, 0, 0));
         statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         statusComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        passwordField.setBackground(new java.awt.Color(255, 255, 255));
+        passwordField.setBackground(new java.awt.Color(229, 229, 229));
         passwordField.setForeground(new java.awt.Color(0, 0, 0));
         passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -181,8 +152,8 @@ public class StaffManagementView extends javax.swing.JDialog {
         deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete Staff");
 
-        statusLabel.setFont(new java.awt.Font("Comic Sans MS", 2, 12)); // NOI18N
-        statusLabel.setForeground(new java.awt.Color(0, 102, 255));
+        statusLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
+        statusLabel.setForeground(new java.awt.Color(51, 102, 255));
         statusLabel.setText("Ready to manage staff");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -293,12 +264,12 @@ public class StaffManagementView extends javax.swing.JDialog {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(clearBtn)))
-                        .addGap(12, 12, 12))))
+                        .addGap(20, 20, 20))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +281,7 @@ public class StaffManagementView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
         );
 
@@ -318,13 +289,10 @@ public class StaffManagementView extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        pack();
-        setLocationRelativeTo(null);
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JComboBox<String> getRoleComboBox() {
+public JComboBox<String> getRoleComboBox() {
         return roleComboBox;
     }
 
@@ -403,17 +371,15 @@ public class StaffManagementView extends javax.swing.JDialog {
         statusLabel.setText(message);
         statusLabel.setForeground(color);
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton clearBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JTextField fnameField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
