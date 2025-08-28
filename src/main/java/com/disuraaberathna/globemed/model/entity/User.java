@@ -108,7 +108,7 @@ public class User implements Serializable, StaffMember {
 
     @Override
     public String showDetails() {
-        return "User Details : " + getTitle() + " " + getFirstName() + " " + getLastName() + ", Role : " + getRole();
+        return "User : " + getTitle() + " " + getFirstName() + " " + getLastName() + ", Role : " + getRole();
     }
 
     @Override
