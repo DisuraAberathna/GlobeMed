@@ -58,7 +58,7 @@ public class PatientView extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
         updateBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        formCancelBtn = new javax.swing.JButton();
+        cancelBtn = new javax.swing.JButton();
         dobField = new com.toedter.calendar.JDateChooser();
         idField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
@@ -111,10 +111,10 @@ public class PatientView extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Patient Information");
 
-        formCancelBtn.setBackground(new java.awt.Color(255, 51, 51));
-        formCancelBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        formCancelBtn.setForeground(new java.awt.Color(255, 255, 255));
-        formCancelBtn.setText("Cancel");
+        cancelBtn.setBackground(new java.awt.Color(255, 51, 51));
+        cancelBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        cancelBtn.setForeground(new java.awt.Color(255, 255, 255));
+        cancelBtn.setText("Cancel");
 
         dobField.setBackground(new java.awt.Color(229, 229, 229));
         dobField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Date of Birth", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
@@ -160,7 +160,7 @@ public class PatientView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(undoBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(formCancelBtn)))
+                                .addComponent(cancelBtn)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(mobileField, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lnameField, javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +195,7 @@ public class PatientView extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveBtn)
                     .addComponent(updateBtn)
-                    .addComponent(formCancelBtn)
+                    .addComponent(cancelBtn)
                     .addComponent(undoBtn))
                 .addGap(75, 75, 75))
         );
@@ -320,8 +320,8 @@ public class PatientView extends javax.swing.JPanel {
         return undoBtn;
     }
 
-    public JButton getFormCancelBtn() {
-        return formCancelBtn;
+    public JButton getCancelBtn() {
+        return cancelBtn;
     }
 
     public JButton getClearBtn() {
@@ -362,11 +362,11 @@ public class PatientView extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea addressArea;
+    private javax.swing.JButton cancelBtn;
     private javax.swing.JButton clearBtn;
     private com.toedter.calendar.JDateChooser dobField;
     private javax.swing.JTextField emailField;
     private javax.swing.JTextField fnameField;
-    private javax.swing.JButton formCancelBtn;
     private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel jLabel2;
