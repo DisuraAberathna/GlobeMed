@@ -3,13 +3,14 @@ package com.disuraaberathna.globemed.model.entity;
 import com.disuraaberathna.globemed.enums.Status;
 import com.disuraaberathna.globemed.enums.UserRoles;
 import com.disuraaberathna.globemed.enums.UserTitles;
+import com.disuraaberathna.globemed.model.service.composite.StaffMember;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User implements Serializable, StaffMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
@@ -103,5 +104,15 @@ public class User implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public String showDetails() {
+        return "User Details : " + getTitle() + " " + getFirstName() + " " + getLastName() + ", Role : " + getRole();
+    }
+
+    @Override
+    public String getName() {
+        return getFirstName() + " " + getLastName();
     }
 }
