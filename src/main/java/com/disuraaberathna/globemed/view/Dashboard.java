@@ -5,6 +5,7 @@
 package com.disuraaberathna.globemed.view;
 
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -29,59 +30,59 @@ public class Dashboard extends javax.swing.JFrame {
     public Dashboard() {
         initComponents();
         createCards();
-        
+
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-    
+
     public void setUserInfo(String userName, String userRole) {
         welcomeLabel.setText("Welcome, " + userName);
         roleLabel.setText("Role: " + userRole);
     }
-    
+
     private void createCards() {
         patientRecordsBtn = createFeatureCard("Patient Records", "👥", "Manage patient information, medical history, and personal details");
         appointmentScheduleBtn = createFeatureCard("Appointments", "📅", "Schedule, reschedule, and manage patient appointments");
         billingBtn = createFeatureCard("Billing & Insurance", "💳", "Generate bills and process insurance claims");
         reportsBtn = createFeatureCard("Medical Reports", "📊", "Generate treatment summaries and financial reports");
         manageStaffBtn = createFeatureCard("Staff Management", "🧑‍⚕️", "Manage staff roles, permissions, and access control");
-        
+
         cardsPanel.add(patientRecordsBtn);
         cardsPanel.add(appointmentScheduleBtn);
         cardsPanel.add(billingBtn);
         cardsPanel.add(reportsBtn);
         cardsPanel.add(manageStaffBtn);
     }
-    
+
     private JButton createFeatureCard(String title, String icon, String description) {
         JButton btn = new JButton();
         btn.setLayout(new BorderLayout());
         btn.setPreferredSize(new Dimension(400, 180));
-        btn.setBorder(BorderFactory.createLineBorder(new Color(0, 0, 0), 1, true));
+        btn.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btn.setBackground(Color.WHITE);
         btn.setFocusPainted(false);
         btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        
+
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
         topPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 0, 10));
         topPanel.setOpaque(false);
-        
+
         JLabel iconLabel = new JLabel(icon);
         iconLabel.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 32));
         iconLabel.setPreferredSize(new Dimension(45, 45));
-        
+
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
         titleLabel.setForeground(new Color(52, 73, 94));
-        
+
         topPanel.add(iconLabel);
         topPanel.add(titleLabel);
-        
+
         JPanel descPanel = new JPanel();
         descPanel.setLayout(new BorderLayout());
         descPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
         descPanel.setOpaque(false);
-        
+
         JTextArea descLabel = new JTextArea();
         descLabel.setText(description);
         descLabel.setLineWrap(true);
@@ -90,45 +91,49 @@ public class Dashboard extends javax.swing.JFrame {
         descLabel.setOpaque(false);
         descLabel.setFont(new Font("Courier New", Font.PLAIN, 14));
         descLabel.setForeground(new Color(127, 140, 141));
-        
+
         descPanel.add(descLabel, BorderLayout.CENTER);
-        
+
         btn.add(topPanel, BorderLayout.NORTH);
         btn.add(descPanel, BorderLayout.CENTER);
-        
+
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn.setBackground(new Color(248, 248, 248));
             }
-            
+
             @Override
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn.setBackground(Color.WHITE);
             }
         });
-        
+
         return btn;
     }
-    
+
     public JButton getPatientRecordsBtn() {
         return patientRecordsBtn;
     }
-    
+
     public JButton getAppointmentScheduleBtn() {
         return appointmentScheduleBtn;
     }
-    
+
     public JButton getBillingBtn() {
         return billingBtn;
     }
-    
+
     public JButton getReportsBtn() {
         return reportsBtn;
     }
-    
+
     public JButton getManageStaffBtn() {
         return manageStaffBtn;
+    }
+
+    public JPanel getViewPanel() {
+        return viewPanel;
     }
 
     /**
@@ -145,7 +150,7 @@ public class Dashboard extends javax.swing.JFrame {
         welcomeLabel = new javax.swing.JLabel();
         roleLabel = new javax.swing.JLabel();
         cardsPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        viewPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("GlobeMed | Healthcare Management System");
@@ -167,52 +172,43 @@ public class Dashboard extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(roleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(roleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30))
         );
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(roleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(40, 40, 40))
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(roleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(40, 40, 40))
         );
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        cardsPanel.setBackground(new java.awt.Color(51, 51, 51));
         cardsPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(15, 15, 15, 15));
         cardsPanel.setLayout(new java.awt.GridLayout(5, 1, 20, 20));
         jPanel1.add(cardsPanel, java.awt.BorderLayout.LINE_START);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1071, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
-        );
-
-        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
+        viewPanel.setLayout(new java.awt.CardLayout());
+        jPanel1.add(viewPanel, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -223,8 +219,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel cardsPanel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel roleLabel;
+    private javax.swing.JPanel viewPanel;
     private javax.swing.JLabel welcomeLabel;
     private javax.swing.JButton patientRecordsBtn;
     private javax.swing.JButton appointmentScheduleBtn;
