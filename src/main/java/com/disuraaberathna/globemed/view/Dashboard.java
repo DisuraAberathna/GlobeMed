@@ -87,6 +87,7 @@ public class Dashboard extends javax.swing.JFrame {
         descLabel.setText(description);
         descLabel.setLineWrap(true);
         descLabel.setWrapStyleWord(true);
+        descLabel.enable(false);
         descLabel.setEditable(false);
         descLabel.setOpaque(false);
         descLabel.setFont(new Font("Courier New", Font.PLAIN, 14));
