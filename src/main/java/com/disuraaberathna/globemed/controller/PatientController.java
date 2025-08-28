@@ -1,5 +1,6 @@
 package com.disuraaberathna.globemed.controller;
 
+import com.disuraaberathna.globemed.enums.Genders;
 import com.disuraaberathna.globemed.model.dao.PatientDAO;
 import com.disuraaberathna.globemed.model.entity.Patient;
 import com.disuraaberathna.globemed.model.service.memento.PatientCaretaker;
@@ -8,9 +9,14 @@ import com.disuraaberathna.globemed.view.PatientView;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class PatientController {
@@ -29,6 +35,7 @@ public class PatientController {
         this.patientCaretaker = new PatientCaretaker();
 
         loadPatientTable();
+        addEventListeners();
     }
 
     private void loadPatientTable() {
@@ -68,6 +75,7 @@ public class PatientController {
         if (patient == null) {
             return;
         }
+
         view.getIdField().setText(String.valueOf(patient.getId()));
         view.getFnameField().setText(patient.getFirstName());
         view.getLnameField().setText(patient.getLastName());
@@ -78,6 +86,19 @@ public class PatientController {
         view.getAddressArea().setText(patient.getAddress());
     }
 
+    private void updatePatientFromView() {
+        if (selectedPatient == null) {
+            selectedPatient = new Patient();
+        }
+
+        selectedPatient.setFirstName(view.getFnameField().getText());
+        selectedPatient.setLastName(view.getLnameField().getText());
+        selectedPatient.setMobile(view.getMobileField().getText());
+        selectedPatient.setEmail(view.getEmailField().getText());
+        selectedPatient.setGender(Genders.valueOf((String) view.getGenderComboBox().getSelectedItem()));
+        selectedPatient.setDateOfBirth(view.getDobField().getDate());
+        selectedPatient.setAddress(view.getAddressArea().getText());
+    }
 
     private boolean validatePatientData() {
         if (view.getFnameField().getText().trim().isEmpty()) {
@@ -101,6 +122,108 @@ public class PatientController {
         }
 
         return true;
+    }
+
+    private void addEventListeners() {
+        view.getSaveBtn().addActionListener(e -> {
+            if (!validatePatientData()) {
+                return;
+            }
+
+            updatePatientFromView();
+            patientCaretaker.save(selectedPatient.save());
+
+            try {
+                patientDAO.savePatient(selectedPatient);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Patient saved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadPatientTable();
+                view.clearForm();
+                selectedPatient = null;
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Error saving patient: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                logger.log(Level.SEVERE, ex.getMessage(), ex);
+            }
+        });
+
+        view.getUpdateBtn().addActionListener(e -> {
+            if (selectedPatient == null || selectedPatient.getId() == null) {
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Please select a patient to update.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            if (!validatePatientData()) {
+                return;
+            }
+
+            updatePatientFromView();
+            patientCaretaker.save(selectedPatient.save());
+
+            try {
+                patientDAO.updatePatient(selectedPatient);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Patient updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+                loadPatientTable();
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Error updating patient: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                logger.log(Level.SEVERE, ex.getMessage(), ex);
+            }
+        });
+
+        view.getUndoBtn().addActionListener(e -> {
+            if (selectedPatient != null) {
+                selectedPatient.restore(patientCaretaker.undo());
+                updateView(selectedPatient);
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "Changes undone.", "Undo", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(viewPanel.getParent(), "No patient selected to undo changes.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        });
+
+        view.getCancelBtn().addActionListener(e -> {
+            view.clearForm();
+            selectedPatient = null;
+            view.getPatientsTable().clearSelection();
+        });
+
+        view.getSearchField().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() != KeyEvent.VK_ENTER) {
+                    return;
+                }
+
+                String searchTerm = view.getSearchField().getText().trim().toLowerCase();
+
+                if (searchTerm.isEmpty()) {
+                    loadPatientTable();
+                    return;
+                }
+
+                List<Patient> filteredPatients = allPatients.stream()
+                        .filter(p -> p.getFirstName().toLowerCase().contains(searchTerm) ||
+                                p.getLastName().toLowerCase().contains(searchTerm) ||
+                                p.getMobile().toLowerCase().contains(searchTerm) ||
+                                (p.getEmail() != null && p.getEmail().toLowerCase().contains(searchTerm)))
+                        .toList();
+
+                updatePatientsTable(filteredPatients);
+            }
+        });
+
+        view.getPatientsTable().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = view.getPatientsTable().getSelectedRow();
+
+                if (row >= 0) {
+                    selectPatientFromTable(row);
+                }
+            }
+        });
+
+        view.getClearBtn().addActionListener(e -> {
+            view.getSearchField().setText("");
+            loadPatientTable();
+        });
     }
 
     public void setPatient(Patient patient) {
