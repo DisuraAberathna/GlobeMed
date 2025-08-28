@@ -1,20 +1,46 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.disuraaberathna.globemed.view;
+
+import com.disuraaberathna.globemed.enums.Genders;
+import com.disuraaberathna.globemed.enums.Status;
+import com.disuraaberathna.globemed.enums.UserRoles;
+import com.disuraaberathna.globemed.enums.UserTitles;
+
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author User
  */
-public class PatientView extends javax.swing.JFrame {
+public class PatientView extends javax.swing.JPanel {
 
     /**
-     * Creates new form PatientView
+     * Creates new form a
      */
     public PatientView() {
         initComponents();
+
+        loadGenders();
+    }
+
+    private void loadGenders() {
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        model.addElement("Select gender");
+
+        for (Genders genders : Genders.values()) {
+            model.addElement(genders);
+        }
+
+        genderComboBox.setModel(model);
     }
 
     /**
@@ -26,57 +52,327 @@ public class PatientView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        roleComboBox = new javax.swing.JComboBox<>();
+        genderComboBox = new javax.swing.JComboBox<>();
+        fnameField = new javax.swing.JTextField();
+        lnameField = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
+        statusComboBox = new javax.swing.JComboBox<>();
+        passwordField = new javax.swing.JPasswordField();
+        addBtn = new javax.swing.JButton();
+        updateBtn = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        deleteBtn = new javax.swing.JButton();
+        statusLabel = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        searchField = new javax.swing.JTextField();
+        clearBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        patientTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(229, 229, 229));
+
+        roleComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        roleComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        roleComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        roleComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Role", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        genderComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        genderComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        genderComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Gender", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        fnameField.setBackground(new java.awt.Color(229, 229, 229));
+        fnameField.setForeground(new java.awt.Color(0, 0, 0));
+        fnameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "First Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        lnameField.setBackground(new java.awt.Color(229, 229, 229));
+        lnameField.setForeground(new java.awt.Color(0, 0, 0));
+        lnameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Last Name", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        usernameField.setBackground(new java.awt.Color(229, 229, 229));
+        usernameField.setForeground(new java.awt.Color(0, 0, 0));
+        usernameField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Username", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        statusComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        statusComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        statusComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        statusComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Status", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        passwordField.setBackground(new java.awt.Color(229, 229, 229));
+        passwordField.setForeground(new java.awt.Color(0, 0, 0));
+        passwordField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Password", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        addBtn.setBackground(new java.awt.Color(51, 102, 255));
+        addBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        addBtn.setForeground(new java.awt.Color(255, 255, 255));
+        addBtn.setText("Add Staff");
+
+        updateBtn.setBackground(new java.awt.Color(255, 204, 102));
+        updateBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        updateBtn.setForeground(new java.awt.Color(0, 0, 0));
+        updateBtn.setText("Update Staff");
+
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Patient Information");
+
+        deleteBtn.setBackground(new java.awt.Color(255, 51, 51));
+        deleteBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        deleteBtn.setForeground(new java.awt.Color(255, 255, 255));
+        deleteBtn.setText("Delete Staff");
+
+        statusLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
+        statusLabel.setForeground(new java.awt.Color(51, 102, 255));
+        statusLabel.setText("Ready to manage staff");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(statusLabel)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(statusComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addGroup(jPanel4Layout.createSequentialGroup()
+                                        .addComponent(addBtn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(updateBtn)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(deleteBtn)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(passwordField)
+                            .addComponent(usernameField)
+                            .addComponent(lnameField)
+                            .addComponent(fnameField)
+                            .addComponent(genderComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(roleComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15))))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(roleComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(statusComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusLabel)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addBtn)
+                    .addComponent(updateBtn)
+                    .addComponent(deleteBtn))
+                .addGap(20, 20, 20))
         );
 
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
+        jPanel3.add(jPanel4, java.awt.BorderLayout.LINE_START);
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+
+        searchField.setBackground(new java.awt.Color(255, 255, 255));
+        searchField.setForeground(new java.awt.Color(0, 0, 0));
+        searchField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Search", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+
+        clearBtn.setBackground(new java.awt.Color(0, 0, 0));
+        clearBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        clearBtn.setForeground(new java.awt.Color(255, 255, 255));
+        clearBtn.setText("Clear");
+
+        patientTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "First Name", "Last Name", "Mobile", "Email", "Gender", "Date of Birth", "Address"
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PatientView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PatientView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PatientView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PatientView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PatientView().setVisible(true);
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        patientTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(patientTable);
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Patient Records");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 776, Short.MAX_VALUE)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(clearBtn)))
+                        .addGap(20, 20, 20))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearBtn))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+        );
+
+        jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
+    }// </editor-fold>//GEN-END:initComponents
+
+    public JComboBox<String> getRoleComboBox() {
+        return roleComboBox;
+    }
+
+    public JComboBox<String> getTitleComboBox() {
+        return genderComboBox;
+    }
+
+    public JTextField getFnameField() {
+        return fnameField;
+    }
+
+    public JTextField getLnameField() {
+        return lnameField;
+    }
+
+    public JTextField getUsernameField() {
+        return usernameField;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JComboBox<String> getStatusComboBox() {
+        return statusComboBox;
+    }
+
+    public JButton getAddBtn() {
+        return addBtn;
+    }
+
+    public JButton getUpdateBtn() {
+        return updateBtn;
+    }
+
+    public JButton getDeleteBtn() {
+        return deleteBtn;
+    }
+
+    public JButton getClearBtn() {
+        return clearBtn;
+    }
+
+    public JTextField getSearchField() {
+        return searchField;
+    }
+
+    public JTable getStaffTable() {
+        return patientTable;
+    }
+
+    public void clearForm() {
+        roleComboBox.setSelectedIndex(0);
+        genderComboBox.setSelectedIndex(0);
+        fnameField.setText("");
+        lnameField.setText("");
+        usernameField.setText("");
+        passwordField.setText("");
+        statusComboBox.setSelectedIndex(0);
+        statusLabel.setText("Ready to manage staff");
+    }
+
+    public void populateFormFromTable(int row) {
+        if (row >= 0) {
+            roleComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 1)));
+            genderComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 2)));
+            fnameField.setText(String.valueOf(patientTable.getValueAt(row, 3)));
+            lnameField.setText(String.valueOf(patientTable.getValueAt(row, 4)));
+            usernameField.setText(String.valueOf(patientTable.getValueAt(row, 5)));
+            statusComboBox.setSelectedItem(String.valueOf(patientTable.getValueAt(row, 6)));
+            statusLabel.setText("Selected staff for modification");
+        }
+    }
+
+    public void updateStatus(String message, Color color) {
+        statusLabel.setText(message);
+        statusLabel.setForeground(color);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JTextField fnameField;
+    private javax.swing.JComboBox<String> genderComboBox;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lnameField;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTable patientTable;
+    private javax.swing.JComboBox<String> roleComboBox;
+    private javax.swing.JTextField searchField;
+    private javax.swing.JComboBox<String> statusComboBox;
+    private javax.swing.JLabel statusLabel;
+    private javax.swing.JButton updateBtn;
+    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }
