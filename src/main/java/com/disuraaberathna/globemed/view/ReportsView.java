@@ -4,7 +4,6 @@
  */
 package com.disuraaberathna.globemed.view;
 
-import java.awt.*;
 import javax.swing.*;
 
 /**
@@ -33,14 +32,16 @@ public class ReportsView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        doctorComboBox = new javax.swing.JComboBox<>();
-        scheduleBtn = new javax.swing.JButton();
+        typeComboBox = new javax.swing.JComboBox<>();
+        generateBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         patientComboBox = new javax.swing.JComboBox<>();
         clearBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        reportArea = new javax.swing.JTextArea();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -50,15 +51,15 @@ public class ReportsView extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(229, 229, 229));
 
-        doctorComboBox.setBackground(new java.awt.Color(229, 229, 229));
-        doctorComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        doctorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Treatment Summary", "Financial Report" }));
-        doctorComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Report Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        typeComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        typeComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Treatment Summary", "Financial Report" }));
+        typeComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Report Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        scheduleBtn.setBackground(new java.awt.Color(51, 102, 255));
-        scheduleBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        scheduleBtn.setForeground(new java.awt.Color(255, 255, 255));
-        scheduleBtn.setText("Generate Report");
+        generateBtn.setBackground(new java.awt.Color(51, 102, 255));
+        generateBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        generateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        generateBtn.setText("Generate Report");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -81,11 +82,11 @@ public class ReportsView extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(doctorComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(patientComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(scheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(generateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(clearBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
@@ -101,10 +102,10 @@ public class ReportsView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(patientComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(doctorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scheduleBtn)
+                    .addComponent(generateBtn)
                     .addComponent(clearBtn))
                 .addGap(223, 223, 223))
         );
@@ -119,17 +120,18 @@ public class ReportsView extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(153, 153, 153)));
+        jPanel2.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
-        );
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        reportArea.setBackground(new java.awt.Color(255, 255, 255));
+        reportArea.setColumns(20);
+        reportArea.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        reportArea.setForeground(new java.awt.Color(0, 0, 0));
+        reportArea.setRows(5);
+        jScrollPane1.setViewportView(reportArea);
+
+        jPanel2.add(jScrollPane1, "card2");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -166,22 +168,30 @@ public class ReportsView extends javax.swing.JPanel {
         return patientComboBox;
     }
 
-    public JButton getScheduleBtn() {
-        return scheduleBtn;
+    public JComboBox<String> getTypeComboBox() {
+        return typeComboBox;
+    }
+
+    public JButton getGenerateBtn() {
+        return generateBtn;
     }
 
     public JButton getClearBtn() {
         return clearBtn;
     }
-   
+
+    public JTextArea getReportArea() {
+        return reportArea;
+    }
+
     public void clearForm() {
-        doctorComboBox.setSelectedIndex(0);
+        typeComboBox.setSelectedIndex(0);
         patientComboBox.setSelectedIndex(0);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearBtn;
-    private javax.swing.JComboBox<String> doctorComboBox;
+    private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -189,7 +199,9 @@ public class ReportsView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> patientComboBox;
-    private javax.swing.JButton scheduleBtn;
+    private javax.swing.JTextArea reportArea;
+    private javax.swing.JComboBox<String> typeComboBox;
     // End of variables declaration//GEN-END:variables
 }
