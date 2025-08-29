@@ -19,7 +19,7 @@ public class FinancialReportVisitor implements ReportVisitor {
     public void visit(Bill bill) {
         report.append("\n- Bill ID: ").append(bill.getId())
                 .append("\n  Date: ").append(bill.getDate())
-                .append("\n  Amount: $").append(bill.getAmount())
+                .append("\n  Amount: LKR").append(bill.getAmount())
                 .append("\n  Status: ").append(bill.getStatus());
         totalAmount += bill.getAmount();
     }
