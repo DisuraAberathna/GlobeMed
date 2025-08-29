@@ -4,7 +4,6 @@
  */
 package com.disuraaberathna.globemed.view;
 
-import com.disuraaberathna.globemed.enums.Genders;
 import com.toedter.calendar.JDateChooser;
 
 import java.awt.*;
