@@ -10,15 +10,15 @@ public class Insurance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Double claim_amount;
-    private String description;
+    private String provider;
+    private String policyNumber;
 
     public Insurance() {
     }
 
-    public Insurance(Double claim_amount, String description) {
-        this.claim_amount = claim_amount;
-        this.description = description;
+    public Insurance(String provider, String policyNumber) {
+        this.provider = provider;
+        this.policyNumber = policyNumber;
     }
 
     public Integer getId() {
@@ -29,19 +29,19 @@ public class Insurance implements Serializable {
         this.id = id;
     }
 
-    public Double getClaim_amount() {
-        return claim_amount;
+    public String getProvider() {
+        return provider;
     }
 
-    public void setClaim_amount(Double claim_amount) {
-        this.claim_amount = claim_amount;
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPolicyNumber() {
+        return policyNumber;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPolicyNumber(String policyNumber) {
+        this.policyNumber = policyNumber;
     }
 }
