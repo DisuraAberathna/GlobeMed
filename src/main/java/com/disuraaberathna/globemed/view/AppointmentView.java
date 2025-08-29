@@ -33,9 +33,10 @@ public class AppointmentView extends javax.swing.JPanel {
         SpinnerDateModel model = new SpinnerDateModel(date, null, null, Calendar.MINUTE);
         timeField.setModel(model);
         JSpinner.DateEditor editor = new JSpinner.DateEditor(timeField, "HH:mm");
-        editor.setEnabled(false);
-        editor.setBackground(new Color(229,229,229));
+        editor.getTextField().setEditable(false);
+        editor.getTextField().setHorizontalAlignment(SwingConstants.LEADING);
         timeField.setEditor(editor);
+        timeField.setBackground(new Color(229,229,229));
     }
 
     /**
@@ -76,7 +77,7 @@ public class AppointmentView extends javax.swing.JPanel {
 
         doctorComboBox.setBackground(new java.awt.Color(229, 229, 229));
         doctorComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        doctorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        doctorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Doctor" }));
         doctorComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Doctor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         scheduleBtn.setBackground(new java.awt.Color(51, 102, 255));
@@ -104,7 +105,7 @@ public class AppointmentView extends javax.swing.JPanel {
 
         patientComboBox.setBackground(new java.awt.Color(229, 229, 229));
         patientComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        patientComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        patientComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Patient" }));
         patientComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Patient", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         statusLabel.setFont(new java.awt.Font("Comic Sans MS", 3, 12)); // NOI18N
