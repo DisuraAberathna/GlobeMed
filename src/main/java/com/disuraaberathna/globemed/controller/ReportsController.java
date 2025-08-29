@@ -3,12 +3,14 @@ package com.disuraaberathna.globemed.controller;
 import com.disuraaberathna.globemed.model.dao.BillDAO;
 import com.disuraaberathna.globemed.model.dao.MedicalReportDAO;
 import com.disuraaberathna.globemed.model.dao.PatientDAO;
+import com.disuraaberathna.globemed.model.dao.UserDAO;
 import com.disuraaberathna.globemed.model.entity.Bill;
 import com.disuraaberathna.globemed.model.entity.MedicalReport;
 import com.disuraaberathna.globemed.model.entity.Patient;
 import com.disuraaberathna.globemed.model.service.visitor.FinancialReportVisitor;
 import com.disuraaberathna.globemed.model.service.visitor.TreatmentSummaryVisitor;
 import com.disuraaberathna.globemed.util.LoggerUtil;
+import com.disuraaberathna.globemed.view.MedicalReportView;
 import com.disuraaberathna.globemed.view.ReportsView;
 
 import javax.swing.*;
@@ -20,15 +22,16 @@ public class ReportsController {
     private final PatientDAO patientDAO;
     private final BillDAO billDAO;
     private final MedicalReportDAO medicalReportDAO;
+    private final UserDAO userDAO;
     private List<Patient> patients;
     private final JPanel viewPanel;
-    private final static Logger logger = LoggerUtil.getLogger();
 
-    public ReportsController(ReportsView view, PatientDAO patientDAO, BillDAO billDAO, MedicalReportDAO medicalReportDAO, JPanel viewPanel) {
+    public ReportsController(ReportsView view, PatientDAO patientDAO, BillDAO billDAO, MedicalReportDAO medicalReportDAO, UserDAO userDAO, JPanel viewPanel) {
         this.view = view;
         this.patientDAO = patientDAO;
         this.billDAO = billDAO;
         this.medicalReportDAO = medicalReportDAO;
+        this.userDAO = userDAO;
         this.viewPanel = viewPanel;
 
         loadInitialData();
@@ -55,10 +58,15 @@ public class ReportsController {
             }
         });
 
+        view.getCreateMedicalReportBtn().addActionListener(e -> {
+            new MedicalReportController(
+                    new MedicalReportView(), patientDAO, userDAO, medicalReportDAO, viewPanel
+            ).showView();
+        });
+
         view.getClearBtn().addActionListener(e -> {
             view.clearForm();
             view.getReportArea().setText("");
-
         });
     }
 
