@@ -58,4 +58,11 @@ public class BillDAO {
                     .getResultList();
         }
     }
+
+    public List<Bill> getAllBills() {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from Bill order by date desc", Bill.class)
+                    .getResultList();
+        }
+    }
 }
