@@ -6,7 +6,6 @@ import com.disuraaberathna.globemed.util.LoggerUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +34,19 @@ public class MedicalReportDAO {
             return session.createQuery("from MedicalReport where patient.id = :patientId", MedicalReport.class)
                     .setParameter("patientId", patientId)
                     .getResultList();
+        }
+    }
+
+    public List<MedicalReport> getAllMedicalReports() {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery("from MedicalReport order by date desc", MedicalReport.class)
+                    .getResultList();
+        }
+    }
+
+    public MedicalReport getMedicalReportById(int reportId) {
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.get(MedicalReport.class, reportId);
         }
     }
 }
