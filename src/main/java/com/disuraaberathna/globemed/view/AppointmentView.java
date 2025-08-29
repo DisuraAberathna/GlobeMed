@@ -34,6 +34,8 @@ public class AppointmentView extends javax.swing.JPanel {
         SpinnerDateModel model = new SpinnerDateModel(date, null, null, Calendar.MINUTE);
         timeField.setModel(model);
         JSpinner.DateEditor editor = new JSpinner.DateEditor(timeField, "HH:mm");
+        editor.setEnabled(false);
+        editor.setBackground(new Color(229,229,229));
         timeField.setEditor(editor);
     }
 
