@@ -266,12 +266,12 @@ public class AppointmentController {
     }
 
     private boolean validateAppointmentData() {
-        if (view.getDoctorComboBox().getSelectedIndex() == -1) {
+        if (view.getDoctorComboBox().getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(viewPanel.getParent(), "Please select a doctor.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
-        if (view.getPatientComboBox().getSelectedIndex() == -1) {
+        if (view.getPatientComboBox().getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(viewPanel.getParent(), "Please select a patient.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
