@@ -33,19 +33,19 @@ public class BillingView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        doctorComboBox = new javax.swing.JComboBox<>();
-        scheduleBtn = new javax.swing.JButton();
-        rescheduleBtn = new javax.swing.JButton();
+        typeComboBox = new javax.swing.JComboBox<>();
+        generateBtn = new javax.swing.JButton();
+        processBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         patientComboBox = new javax.swing.JComboBox<>();
         statusLabel = new javax.swing.JLabel();
         totalField = new javax.swing.JTextField();
-        patientComboBox1 = new javax.swing.JComboBox<>();
+        appointmentComboBox = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         clearBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        appointmentsTable = new javax.swing.JTable();
+        billsTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
@@ -56,20 +56,20 @@ public class BillingView extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(229, 229, 229));
 
-        doctorComboBox.setBackground(new java.awt.Color(229, 229, 229));
-        doctorComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        doctorComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direct", "Insurance" }));
-        doctorComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Payment Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        typeComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        typeComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        typeComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Direct", "Insurance" }));
+        typeComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Payment Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        scheduleBtn.setBackground(new java.awt.Color(51, 102, 255));
-        scheduleBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        scheduleBtn.setForeground(new java.awt.Color(255, 255, 255));
-        scheduleBtn.setText("Generate Bill");
+        generateBtn.setBackground(new java.awt.Color(51, 102, 255));
+        generateBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        generateBtn.setForeground(new java.awt.Color(255, 255, 255));
+        generateBtn.setText("Generate Bill");
 
-        rescheduleBtn.setBackground(new java.awt.Color(255, 204, 102));
-        rescheduleBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        rescheduleBtn.setForeground(new java.awt.Color(0, 0, 0));
-        rescheduleBtn.setText("Process Bill");
+        processBtn.setBackground(new java.awt.Color(255, 204, 102));
+        processBtn.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        processBtn.setForeground(new java.awt.Color(0, 0, 0));
+        processBtn.setText("Process Bill");
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
@@ -87,10 +87,10 @@ public class BillingView extends javax.swing.JPanel {
         totalField.setBackground(new java.awt.Color(229, 229, 229));
         totalField.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Total Amount", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
-        patientComboBox1.setBackground(new java.awt.Color(229, 229, 229));
-        patientComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        patientComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Appointment" }));
-        patientComboBox1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Appointment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
+        appointmentComboBox.setBackground(new java.awt.Color(229, 229, 229));
+        appointmentComboBox.setForeground(new java.awt.Color(0, 0, 0));
+        appointmentComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Appointment" }));
+        appointmentComboBox.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Appointment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Comic Sans MS", 0, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -105,14 +105,14 @@ public class BillingView extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(totalField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(doctorComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(typeComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(patientComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(scheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(generateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rescheduleBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(patientComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(processBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(appointmentComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(0, 0, Short.MAX_VALUE)))
@@ -126,17 +126,17 @@ public class BillingView extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(patientComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(patientComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(appointmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(doctorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(typeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(totalField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(statusLabel)
                 .addGap(30, 30, 30)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(scheduleBtn)
-                    .addComponent(rescheduleBtn))
+                    .addComponent(generateBtn)
+                    .addComponent(processBtn))
                 .addGap(217, 217, 217))
         );
 
@@ -153,7 +153,7 @@ public class BillingView extends javax.swing.JPanel {
         clearBtn.setForeground(new java.awt.Color(255, 255, 255));
         clearBtn.setText("Clear");
 
-        appointmentsTable.setModel(new javax.swing.table.DefaultTableModel(
+        billsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -169,8 +169,8 @@ public class BillingView extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        appointmentsTable.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(appointmentsTable);
+        billsTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(billsTable);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -221,13 +221,20 @@ public class BillingView extends javax.swing.JPanel {
         return patientComboBox;
     }
 
-
-    public JButton getScheduleBtn() {
-        return scheduleBtn;
+    public JComboBox<String> getAppointmentComboBox() {
+        return appointmentComboBox;
     }
 
-    public JButton getRescheduleBtn() {
-        return rescheduleBtn;
+    public JComboBox<String> getTypeComboBox() {
+        return typeComboBox;
+    }
+
+    public JButton getGenerateBtn() {
+        return generateBtn;
+    }
+
+    public JButton getProcessBtn() {
+        return processBtn;
     }
 
     public JButton getClearBtn() {
@@ -238,12 +245,17 @@ public class BillingView extends javax.swing.JPanel {
         return searchField;
     }
 
-    public JTable getAppointmentsTable() {
-        return appointmentsTable;
+    public JTable getBillsTable() {
+        return billsTable;
+    }
+
+    public JTextField getTotalField() {
+        return totalField;
     }
 
     public void clearForm() {
-        doctorComboBox.setSelectedIndex(0);
+        typeComboBox.setSelectedIndex(0);
+        appointmentComboBox.setSelectedIndex(0);
         patientComboBox.setSelectedIndex(0);
         statusLabel.setText("Ready to generate bill");
     }
@@ -254,9 +266,10 @@ public class BillingView extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable appointmentsTable;
+    private javax.swing.JComboBox<String> appointmentComboBox;
+    private javax.swing.JTable billsTable;
     private javax.swing.JButton clearBtn;
-    private javax.swing.JComboBox<String> doctorComboBox;
+    private javax.swing.JButton generateBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
@@ -265,11 +278,10 @@ public class BillingView extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> patientComboBox;
-    private javax.swing.JComboBox<String> patientComboBox1;
-    private javax.swing.JButton rescheduleBtn;
-    private javax.swing.JButton scheduleBtn;
+    private javax.swing.JButton processBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JLabel statusLabel;
     private javax.swing.JTextField totalField;
+    private javax.swing.JComboBox<String> typeComboBox;
     // End of variables declaration//GEN-END:variables
 }
