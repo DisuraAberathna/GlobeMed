@@ -12,6 +12,7 @@ import com.disuraaberathna.globemed.view.StaffManagementView;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -217,9 +218,9 @@ public class StaffManagementController {
             }
         });
 
-        view.getSearchField().addKeyListener(new java.awt.event.KeyAdapter() {
+        view.getSearchField().addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(java.awt.event.KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 if (e.getKeyCode() != KeyEvent.VK_ENTER) {
                     return;
                 }
