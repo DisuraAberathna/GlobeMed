@@ -48,7 +48,7 @@ public class ReportsController {
 
     private void addEventListeners() {
         view.getGenerateBtn().addActionListener(e -> {
-            Patient selectedPatient = patients.get(view.getPatientComboBox().getSelectedIndex());
+            Patient selectedPatient = patients.get(view.getPatientComboBox().getSelectedIndex()-1);
             String reportType = String.valueOf(view.getTypeComboBox().getSelectedItem());
 
             if ("Treatment Summary".equals(reportType)) {
