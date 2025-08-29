@@ -1,6 +1,8 @@
 package com.disuraaberathna.globemed.model.entity;
 
 import com.disuraaberathna.globemed.enums.Status;
+import com.disuraaberathna.globemed.model.service.visitor.ReportElement;
+import com.disuraaberathna.globemed.model.service.visitor.ReportVisitor;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -8,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "bills")
-public class Bill implements Serializable {
+public class Bill implements Serializable, ReportElement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -80,5 +82,10 @@ public class Bill implements Serializable {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public void accept(ReportVisitor visitor) {
+        visitor.visit(this);
     }
 }
