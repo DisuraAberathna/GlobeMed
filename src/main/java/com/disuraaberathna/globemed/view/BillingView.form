@@ -59,15 +59,15 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="totalField" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="doctorComboBox" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="typeComboBox" alignment="0" max="32767" attributes="0"/>
                                       <Component id="patientComboBox" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          <Component id="scheduleBtn" min="-2" pref="147" max="-2" attributes="0"/>
+                                          <Component id="generateBtn" min="-2" pref="147" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="rescheduleBtn" min="-2" pref="120" max="-2" attributes="0"/>
+                                          <Component id="processBtn" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="patientComboBox1" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="appointmentComboBox" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -87,17 +87,17 @@
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Component id="patientComboBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="patientComboBox1" min="-2" max="-2" attributes="0"/>
+                          <Component id="appointmentComboBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                          <Component id="doctorComboBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="typeComboBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="totalField" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                           <Component id="statusLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="scheduleBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rescheduleBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="generateBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="processBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                       </Group>
@@ -105,7 +105,7 @@
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JComboBox" name="doctorComboBox">
+                <Component class="javax.swing.JComboBox" name="typeComboBox">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e5" green="e5" red="e5" type="rgb"/>
@@ -135,7 +135,7 @@
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
                 </Component>
-                <Component class="javax.swing.JButton" name="scheduleBtn">
+                <Component class="javax.swing.JButton" name="generateBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="66" red="33" type="rgb"/>
@@ -149,7 +149,7 @@
                     <Property name="text" type="java.lang.String" value="Generate Bill"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="rescheduleBtn">
+                <Component class="javax.swing.JButton" name="processBtn">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="66" green="cc" red="ff" type="rgb"/>
@@ -232,7 +232,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="patientComboBox1">
+                <Component class="javax.swing.JComboBox" name="appointmentComboBox">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="e5" green="e5" red="e5" type="rgb"/>
@@ -360,7 +360,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="appointmentsTable">
+                    <Component class="javax.swing.JTable" name="billsTable">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="6" rowCount="0">
