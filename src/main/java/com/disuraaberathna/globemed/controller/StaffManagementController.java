@@ -29,7 +29,6 @@ public class StaffManagementController {
     private List<User> allStaff;
     private User selectedUser;
     private final JPanel viewPanel;
-    private String details;
     private final static Logger logger = LoggerUtil.getLogger();
 
     public StaffManagementController(StaffManagementView view, UserDAO userDAO, JPanel viewPanel) {
@@ -40,12 +39,12 @@ public class StaffManagementController {
 
         loadStaffTable();
         addEventListeners();
-        buildStaffHierarchy();
     }
 
     private void loadStaffTable() {
         allStaff = userDAO.getAllUsers();
         updateStaffTable(allStaff);
+        buildStaffHierarchy();
     }
 
     private void updateStaffTable(List<User> staff) {
@@ -87,8 +86,8 @@ public class StaffManagementController {
             staffGroup.addMember(user);
         }
 
-        details = "Staff Hierarchy : \n" + staffGroup.showDetails();
-        System.out.println(details);
+        String details = "Staff Hierarchy : \n" + staffGroup.showDetails();
+        view.getStaffHierarchyArea().setText(details);
     }
 
     private boolean validateStaffDataFields() {
