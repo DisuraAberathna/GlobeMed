@@ -1,8 +1,11 @@
 package com.disuraaberathna.globemed.controller;
 
+import com.disuraaberathna.globemed.model.dao.AppointmentDAO;
 import com.disuraaberathna.globemed.model.dao.PatientDAO;
 import com.disuraaberathna.globemed.model.dao.UserDAO;
 import com.disuraaberathna.globemed.model.entity.User;
+import com.disuraaberathna.globemed.model.service.mediator.AppointmentScheduler;
+import com.disuraaberathna.globemed.view.AppointmentView;
 import com.disuraaberathna.globemed.view.Dashboard;
 import com.disuraaberathna.globemed.view.PatientView;
 import com.disuraaberathna.globemed.view.StaffManagementView;
@@ -62,6 +65,16 @@ public class DashboardController {
     private void addEventListeners() {
         dashboard.getPatientRecordsBtn().addActionListener(e -> {
             new PatientController(new PatientView(), new PatientDAO(), dashboard.getViewPanel()).showView();
+        });
+
+        dashboard.getAppointmentScheduleBtn().addActionListener(e -> {
+            AppointmentDAO appointmentDAO = new AppointmentDAO();
+
+            new AppointmentController(
+                    new AppointmentView(),
+                    new AppointmentScheduler(appointmentDAO, dashboard),
+                    new UserDAO(), new PatientDAO(), appointmentDAO, dashboard.getViewPanel()
+            ).showView();
         });
 
         dashboard.getManageStaffBtn().addActionListener(e -> {
