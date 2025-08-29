@@ -86,4 +86,8 @@ public class UserDAO {
             logger.log(Level.SEVERE, e.getMessage(), e);
         }
     }
+
+    public List<User> getAllDoctors() {
+        return getUsersByRoles(UserRoles.DOCTOR);
+    }
 }
