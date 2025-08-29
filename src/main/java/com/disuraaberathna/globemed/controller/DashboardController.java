@@ -73,13 +73,16 @@ public class DashboardController {
         });
 
         dashboard.getBillingBtn().addActionListener(e -> {
-            new BillingController(new BillingView(), new PatientDAO(), new BillDAO(), dashboard.getViewPanel()).showView();
+            new BillingController(
+                    new BillingView(), new PatientDAO(),
+                    new BillDAO(), new AppointmentDAO(), dashboard.getViewPanel()
+            ).showView();
         });
 
         dashboard.getReportsBtn().addActionListener(e -> {
             new ReportsController(
                     new ReportsView(), new PatientDAO(),
-                    new BillDAO(), new MedicalReportDAO(), dashboard.getViewPanel()
+                    new BillDAO(), new MedicalReportDAO(), new UserDAO(), dashboard.getViewPanel()
             ).showView();
         });
 
