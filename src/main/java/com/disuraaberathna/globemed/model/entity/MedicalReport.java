@@ -1,5 +1,7 @@
 package com.disuraaberathna.globemed.model.entity;
 
+import com.disuraaberathna.globemed.model.service.visitor.ReportElement;
+import com.disuraaberathna.globemed.model.service.visitor.ReportVisitor;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -7,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "medical_report")
-public class MedicalReport implements Serializable {
+public class MedicalReport implements Serializable, ReportElement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -88,5 +90,10 @@ public class MedicalReport implements Serializable {
 
     public void setDoctor(User doctor) {
         this.doctor = doctor;
+    }
+
+    @Override
+    public void accept(ReportVisitor visitor) {
+        visitor.visit(this);
     }
 }
