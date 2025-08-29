@@ -19,9 +19,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -100,6 +98,15 @@ public class BillingController {
 
             if (view.getAppointmentComboBox().getSelectedIndex() <= 0) {
                 view.updateStatus("Please select an appointment", Color.RED);
+                return;
+            }
+
+            Patient selectedPatient = patientList.get(view.getPatientComboBox().getSelectedIndex() - 1);
+            List<Appointment> patientAppointments = appointmentDAO.getAppointmentsByPatient(selectedPatient.getId());
+
+            int appointmentIndex = view.getAppointmentComboBox().getSelectedIndex() - 1;
+            if (appointmentIndex >= patientAppointments.size()) {
+                view.updateStatus("Invalid appointment selection", Color.RED);
                 return;
             }
 
@@ -194,9 +201,24 @@ public class BillingController {
 
     private void updateBillAmount() {
         try {
-            double amount = 5000.00;
-            view.getTotalField().setText(String.valueOf(amount));
+            int selectedIndex = view.getAppointmentComboBox().getSelectedIndex();
+            if (selectedIndex <= 0) {
+                view.getTotalField().setText("0.00");
+                return;
+            }
+
+            Patient selectedPatient = patientList.get(view.getPatientComboBox().getSelectedIndex() - 1);
+            List<Appointment> patientAppointments = appointmentDAO.getAppointmentsByPatient(selectedPatient.getId());
+
+            if (selectedIndex - 1 < patientAppointments.size()) {
+                Appointment selectedAppointment = patientAppointments.get(selectedIndex - 1);
+                double amount = 5000.00;
+                view.getTotalField().setText(String.valueOf(amount));
+            } else {
+                view.getTotalField().setText("0.00");
+            }
         } catch (Exception ex) {
+            logger.severe("Error updating bill amount: " + ex.getMessage());
             view.getTotalField().setText("0.00");
         }
     }
@@ -247,7 +269,6 @@ public class BillingController {
         view.getTotalField().setText("");
         view.updateStatus("Ready to generate bill", Color.BLUE);
     }
-
 
     public void showView() {
         viewPanel.removeAll();
