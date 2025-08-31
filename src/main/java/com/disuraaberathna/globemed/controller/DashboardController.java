@@ -21,12 +21,19 @@ public class DashboardController {
 
     private void setPermissions() {
         switch (user.getRole()) {
-            case DOCTOR, NURSE:
+            case DOCTOR:
                 dashboard.getPatientRecordsBtn().setEnabled(true);
                 dashboard.getAppointmentScheduleBtn().setEnabled(true);
                 dashboard.getBillingBtn().setEnabled(true);
                 dashboard.getReportsBtn().setEnabled(true);
                 dashboard.getManageStaffBtn().setEnabled(true);
+                break;
+            case NURSE:
+                dashboard.getPatientRecordsBtn().setEnabled(true);
+                dashboard.getAppointmentScheduleBtn().setEnabled(true);
+                dashboard.getBillingBtn().setEnabled(false);
+                dashboard.getReportsBtn().setEnabled(true);
+                dashboard.getManageStaffBtn().setEnabled(false);
                 break;
             case PHARMACIST:
                 dashboard.getPatientRecordsBtn().setEnabled(true);
