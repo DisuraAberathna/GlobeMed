@@ -95,7 +95,7 @@ public class PatientController {
         selectedPatient.setLastName(view.getLnameField().getText());
         selectedPatient.setMobile(view.getMobileField().getText());
         selectedPatient.setEmail(view.getEmailField().getText());
-        selectedPatient.setGender(Genders.valueOf((String) view.getGenderComboBox().getSelectedItem()));
+        selectedPatient.setGender(Genders.valueOf(view.getGenderComboBox().getSelectedItem().toString()));
         selectedPatient.setDateOfBirth(view.getDobField().getDate());
         selectedPatient.setAddress(view.getAddressArea().getText());
     }
